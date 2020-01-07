@@ -1,8 +1,6 @@
 import java.math.RoundingMode
 import kotlin.math.*
 
-
-
 fun main(args: Array<String>) {
 
     //-------------------------------------CONSTANTES----------
@@ -115,17 +113,26 @@ fun analisarDistanciaHorizontal(alcance : Double, alcanceDefault : Double, ang: 
     CALCULAR E OBTER VELOCIDADE RECOMENDADA PARA ALCANÇAR O OBJETIVO (alcalceDefault)
  */
 fun obterVelocidadeRecomendada(ang : Double, h: Double, alcanceDefault:Double, g : Double): Double {
-    //y = y0 + (v0y * t) - (g * t*t) / 2
+    //var ang = Math.toRadians(35.0)
+    println("--> " + cos(ang))
+    //Vo = (0.5*Ay*(X/cosθ)²)
+    // / (10+(sinθ)*(X/cosθ))
+    var numerador = 0.5 * 9.8 * Math.pow(750/cos(ang), 2.0)
+    var denominador = 10 + sin(ang) * (750/ cos(ang))
+    //var v0 =  numerador / denominador
 
-    var dividendo = alcanceDefault * g
-    var divisor = sin(ang)
-    //garantir que o divisor sempre seja positiv0 antes de realizar raiz quadrada
-    if(divisor < 0){
-        divisor *= -1
-    }
-    //var velocidade = sqrt(dividendo/divisor)//.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
-    var velocidade = (1/cos(ang)) * sqrt((0.5*g*alcanceDefault*alcanceDefault)/alcanceDefault * tan(ang))
-    return velocidade
+    //var v0 = sqrt((9.8 * 750) / sin(2*ang)) // Essa formula funciona
+    var v0 = sqrt((g * alcanceDefault) / sin(2*ang))
+
+//    var dividendo = alcanceDefault * g
+//    var divisor = sin(ang)
+//    //garantir que o divisor sempre seja positiv0 antes de realizar raiz quadrada
+//    if(divisor < 0){
+//        divisor *= -1
+//    }
+//    //var velocidade = sqrt(dividendo/divisor)//.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
+//    var velocidade = (1/cos(ang)) * sqrt((0.5*g*alcanceDefault*alcanceDefault)/alcanceDefault * tan(ang))
+    return v0
 }
 
 //fun obterVelocidadeRecomendada(ang : Double, h: Double): Double { // todo ainda não funciona
