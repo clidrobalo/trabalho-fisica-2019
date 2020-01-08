@@ -43,6 +43,13 @@ fun simulacao2(g : Double, alcanceDefault: Double) {
         var ang = Math.toRadians(angUser) // converte o que o usuário digitou pra ser calculado aqui dentro em radianos.
 
 
+        if( ang < 0) {
+            println("|------------------------------------------------------------")
+            println("|- O angulo é invalido. Só aceita valores positivos.")
+            simulacao2(g, alcanceDefault)
+        }
+
+
         var y = y0
         var v0x = v0 * cos(ang)
         var v0y = v0 * sin(ang)

@@ -59,6 +59,12 @@ fun simulacao(g : Double, alcanceDefault: Double) {
         print("|- Introduza a velocidade inicial (m/s): ")
         var v0 = readLine()!!.toDouble()
 
+        if(y0 < 0 || ang < 0 || v0 < 0) {
+            println("|------------------------------------------------------------")
+            println("|- Alguns dos parametros é invalido. Só aceita valores positivos.")
+            simulacao(g, alcanceDefault)
+        }
+
         var y = y0
         var v0x = v0 * cos(ang)
         var v0y = v0 * sin(ang)
