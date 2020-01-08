@@ -145,7 +145,11 @@ fun analisarDistanciaHorizontal(alcance : Double, alcanceDefault : Double, ang: 
  */
 fun obterVelocidadeRecomendada(ang : Double, h: Double, alcanceDefault:Double, g : Double): Double {
 
-    var v0 = sqrt((g * alcanceDefault) / sin(2*ang))
-
+    //var v0 = sqrt((g * alcanceDefault) / sin(2*ang))
+    var numerador = g * Math.pow(alcanceDefault, 2.0)
+    println(numerador)
+    var denominador = alcanceDefault * sin(2 * ang) - 2 * h * Math.pow(ang, 2.0)
+    println(denominador)
+    var v0 = sqrt( numerador / denominador)
     return v0
 }
