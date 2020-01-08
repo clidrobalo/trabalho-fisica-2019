@@ -3,28 +3,45 @@ import kotlin.math.*
 
 
 public fun main(args: Array<String>) {
+
+    //-------------------------------------CONSTANTES----------
     val g = 9.807
-    simulacaoCenario2(g)
+    val alcanceDefault : Double = 130.0
+
+
+    var opcao =  menuPrincipal()
+    when(opcao) {
+        "1" -> simulacao2(g, alcanceDefault)
+        "0" -> terminar()
+        else -> {
+            println("|-----------------------------------------------------------|")
+            println("|- Opção invalida. Tente novamente.")
+            println("|-----------------------------------------------------------|")
+            menuPrincipal()
+        }
+    }
 }
 
-fun simulacaoCenario2(g : Double) {
+fun simulacao2(g : Double, alcanceDefault: Double) {
     var opcao : String
 
     do {
         var x :Double = 0.0
 
         println("\n|************************************************************")
-        print("|- Introduza a altura (m): ")
-        var y0 = readLine()!!.toDouble()
+        var y0 = 15.5
+        println("|- Altura: " + y0)
+
+
+        println("|------------------------------------------------------------")
+        var v0 = 20.0
+        println("|- Velocidade inicial: " + v0)
 
         println("|------------------------------------------------------------")
         print("|- Introduza o ângulo de inclinação(0-90 graus): ")
         var angUser = readLine()!!.toDouble()
         var ang = Math.toRadians(angUser) // converte o que o usuário digitou pra ser calculado aqui dentro em radianos.
 
-        println("|------------------------------------------------------------")
-        print("|- Introduza a velocidade inicial (m/s): ")
-        var v0 = readLine()!!.toDouble()
 
         var y = y0
         var v0x = v0 * cos(ang)
@@ -63,3 +80,5 @@ fun simulacaoCenario2(g : Double) {
 
     }while(opcao.toLowerCase() == "s");
 }
+
+
